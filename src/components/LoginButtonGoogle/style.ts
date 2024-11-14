@@ -18,9 +18,10 @@ export const styles = StyleSheet.create({
   },
 
   icon:{
+    width:28,
+    height: 28,
     position: 'absolute',
-    height: '100%',
     left: 5,
-    top:4,
+    top:5,
   }
 });

@@ -21,6 +21,6 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     height: '100%',
     left: 5,
-    top:4,
+    top:5,
   }
 });

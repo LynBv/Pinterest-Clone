@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   avatarImage: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
     margin: "auto"
   },
 
@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   text:{
     marginTop: 10,
     fontWeight: 'bold',
-    fontSize: 30,
+    fontSize: 25,
     textAlign: "center"
   }
 });

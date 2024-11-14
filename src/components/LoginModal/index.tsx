@@ -1,8 +1,12 @@
 import { Modal, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { LoginInput } from "../../components/LoginInput";
 import { LoginButton } from "../../components/LoginButton";
 import { styles } from "./style";
+import { LoginButtonFacebook } from "../LoginButtonFacebook";
+import { LoginButtonGoogle } from "../LoginButtonGoogle";
+import IconM from "@expo/vector-icons/MaterialCommunityIcons";
+import IconA from "@expo/vector-icons/FontAwesome5";
 
 interface PropsModal {
   openModal: boolean;
@@ -21,29 +25,24 @@ export const LoginModal = ({
   handleEmail,
   handlePassword,
 }: PropsModal) => {
+  const [viewPassword, setViewPassword] = useState<boolean>(true);
 
   return (
-    <Modal visible={openModal} animationType="slide" >
+    <Modal visible={openModal} animationType="slide">
       <View style={styles.container}>
         <View style={styles.exitBar}>
-          <TouchableOpacity onPress={() => handleModal(!openModal)}>
-            <Text style={styles.exitButton}>X</Text>
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => handleModal(!openModal)}
+          >
+            <IconM name="close" size={30} color="#000" />
           </TouchableOpacity>
           <Text style={styles.textoEntrar}>Entrar</Text>
         </View>
 
         <View style={styles.boxForms}>
-          <LoginButton
-            title="Continuar com o Facebook"
-            propsBackgroundColor="#1877f2"
-            handleFunction={() => handleModal(!openModal)}
-            propsFontColor="white"
-          />
-          <LoginButton
-            title="Continuar com o Google"
-            propsBackgroundColor="#d7ddda"
-            handleFunction={() => handleModal(!openModal)}
-          />
+          <LoginButtonFacebook handleFunction={() => handleModal(!openModal)} />
+          <LoginButtonGoogle handleFunction={() => handleModal(!openModal)} />
 
           <Text style={styles.textoOu}>Ou</Text>
 
@@ -54,12 +53,24 @@ export const LoginModal = ({
               handleFunctionInput={handleEmail}
               valueImput={emailValue}
             />
-            <LoginInput
-              isSecurity={true}
-              placeHolder="Insira sua senha"
-              handleFunctionInput={handlePassword}
-              valueImput={passwordValue}
-            />
+            <View style={styles.senhaArea}>
+              <LoginInput
+                isSecurity={viewPassword}
+                placeHolder="Insira sua senha"
+                handleFunctionInput={handlePassword}
+                valueImput={passwordValue}
+              />
+              <TouchableOpacity
+                style={styles.iconSenha}
+                onPress={() => setViewPassword(!viewPassword)}
+              >
+                {viewPassword ? (
+                  <IconM name="eye" size={30} color="#636363" />
+                ) : (
+                  <IconM name="eye-off" size={30} color="#636363" />
+                )}
+              </TouchableOpacity>
+            </View>
           </View>
 
           <LoginButton
@@ -69,10 +80,9 @@ export const LoginModal = ({
             propsFontColor="white"
           />
 
-          <Text>Esqueceu a senha?</Text>
+          <Text style={styles.textoSenha}>Esqueceu a senha?</Text>
         </View>
       </View>
     </Modal>
-    
   );
 };

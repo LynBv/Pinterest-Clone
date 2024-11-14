@@ -3,18 +3,15 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
+    width: "100%"
   },
 
   boxForms: {
-    width: "90%",
+    width: "80%",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 20,
-    paddingHorizontal: 20,
     gap: 10,
-    borderRadius: 10,
   },
 
   input: {
@@ -29,10 +26,18 @@ export const styles = StyleSheet.create({
   },
 
   termosDeUso:{
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: 12
   },
 
   span:{
     color: "#1a5fb9"
-  }
+  },
+
+  backgroundImage: {
+    flex: 1,
+    width: "100%",
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

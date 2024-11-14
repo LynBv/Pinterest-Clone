@@ -4,6 +4,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 0.5,
     alignItems: "center",
-    gap: 20,
+    gap: 10,
   },
 });

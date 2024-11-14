@@ -20,8 +20,8 @@ import Img19 from '../img/image20.jpg';
 import Img20 from '../img/image15.jpg';
 import Img21 from '../img/image22.jpg';
 import Img22 from '../img/image10.jpg';
-import Img23 from '../img/image18.jpg';
-import Img24 from '../img/image16.jpg';
+/* import Img23 from '../img/image18.jpg';
+import Img24 from '../img/image16.jpg'; */
 
 export const DataAPI = [
   { id: 1, image: Img1, uri: '../img/image5.jpg' },
@@ -46,6 +46,6 @@ export const DataAPI = [
   { id: 20, image: Img20, uri: '../img/image15.jpg' },
   { id: 21, image: Img21, uri: '../img/image22.jpg' },
   { id: 22, image: Img22, uri: '../img/image10.jpg' },
-  { id: 23, image: Img23, uri: '../img/image18.jpg' },
-  { id: 24, image: Img24, uri: '../img/image16.jpg' }
+ /*  { id: 23, image: Img23, uri: '../img/image18.jpg' },
+  { id: 24, image: Img24, uri: '../img/image16.jpg' } */
 ];

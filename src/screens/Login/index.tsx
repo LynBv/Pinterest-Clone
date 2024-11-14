@@ -1,10 +1,20 @@
-import { Keyboard, Text, TouchableWithoutFeedback, View } from "react-native";
+import {
+  ImageBackground,
+  Keyboard,
+  Linking,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import React, { useState } from "react";
 import { LoginInput } from "../../components/LoginInput";
 import { styles } from "./style";
 import { LoginButton } from "../../components/LoginButton";
 import { WelcomeTitle } from "../../components/WelcomeTitle";
 import { LoginModal } from "../../components/LoginModal";
+import  background  from "../../assets/background.png";
+import { LoginButtonFacebook } from "../../components/LoginButtonFacebook";
+import { LoginButtonGoogle } from "../../components/LoginButtonGoogle";
 
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -24,56 +34,59 @@ export const Login = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <View style={styles.boxForms}>
-          <WelcomeTitle />
+        <ImageBackground
+          source={background}
+          style={styles.backgroundImage}
+          resizeMode="cover"
+        >
+          <View style={styles.boxForms}>
+            <WelcomeTitle />
 
-          <View style={styles.input}>
-            <LoginInput
-              isSecurity={false}
-              placeHolder="Endereço de email"
-              handleFunctionInput={handleEmail}
-              valueImput={email}
-            />
-          </View>
+            <View style={styles.input}>
+              <LoginInput
+                isSecurity={false}
+                placeHolder="Endereço de email"
+                handleFunctionInput={handleEmail}
+                valueImput={email}
+              />
+            </View>
 
-          <LoginButton
-            title="Continuar"
-            propsBackgroundColor="#be0215"
-            handleFunction={() => setOpenModal(!openModal)}
-            propsFontColor="white"
-          />
-
-          <View style={styles.logarRedeSocial}>
             <LoginButton
-              title="Continuar com o Facebook"
-              propsBackgroundColor="#1877f2"
-              handleFunction={handleContinuar}
+              title="Continuar"
+              propsBackgroundColor="#be0215"
+              handleFunction={() => setOpenModal(!openModal)}
               propsFontColor="white"
             />
-            <LoginButton
-              title="Continuar com o Google"
-              propsBackgroundColor="#C3C8C5"
-              handleFunction={handleContinuar}
-            />
+
+            <View style={styles.logarRedeSocial}>
+              <LoginButtonFacebook
+                handleFunction={handleContinuar}
+              />
+              <LoginButtonGoogle handleFunction={handleContinuar}/>
+            </View>
+
+            <Text style={styles.termosDeUso}>
+              Ao continuar você concorda com os{" "}
+              <Text style={styles.span} onPress={()=> Linking.openURL("https://policy.pinterest.com/pt-br/terms-of-service")} >
+                Termos de Serviço{" "}</Text>
+               do Pinterest e confirma que leu a nossa{" "} 
+              <Text style={styles.span} onPress={()=> Linking.openURL("https://policy.pinterest.com/pt-br/notice-at-collection")}>
+                 Política de Privacidade. Aviso na coleta de informações
+              </Text>
+            </Text>
+
+            {openModal && (
+              <LoginModal
+                openModal={openModal}
+                handleModal={setOpenModal}
+                emailValue={email}
+                handleEmail={handleEmail}
+                passwordValue={password}
+                handlePassword={handlePassword}
+              />
+            )}
           </View>
-
-          <Text style={styles.termosDeUso}>
-            Ao continuar você concorda com os <Text style={styles.span}>Termos de Serviço</Text> do Pinterest e
-            confirma que leu a nossa <Text style={styles.span}>Política de Privacidade. Aviso na coleta de
-            informações</Text>
-          </Text>
-
-          {openModal && (
-            <LoginModal
-              openModal={openModal}
-              handleModal={setOpenModal}
-              emailValue={email}
-              handleEmail={handleEmail}
-              passwordValue={password}
-              handlePassword={handlePassword}
-            />
-          )}
-        </View>
+        </ImageBackground>
       </View>
     </TouchableWithoutFeedback>
   );

@@ -16,7 +16,7 @@ interface ArrayPropsApi {
 
 export const FeedRow = ({ imgFeed }: ArrayPropsApi) => {
 
-  const gerarFeed = imgFeed.map((img) => <FeedImg data={img}/> )
+  const gerarFeed = imgFeed.map((img) => <FeedImg key={img.id} data={img}/> )
   return (
       <View style={styles.container}>{gerarFeed}</View>
   );
