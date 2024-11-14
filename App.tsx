@@ -6,8 +6,8 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" backgroundColor="white"/>
-      {/*  <Home />  */}
-     <Login/>
+       <Home /> 
+     {/* <Login/> */}
     </>
   );
 }

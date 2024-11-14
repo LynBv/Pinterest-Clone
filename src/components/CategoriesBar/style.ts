@@ -11,4 +11,9 @@ export const styles = StyleSheet.create({
   categorias: {
     fontWeight: "bold",
   },
+  categoriaPrincipal:{
+    fontWeight: "bold",
+    borderBottomWidth: 4,
+    borderBottomColor: "black"
+  }
 });
